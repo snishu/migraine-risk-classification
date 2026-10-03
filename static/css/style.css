@@ -223,3 +223,908 @@ a{ color: inherit; }
   .metric-strip{ grid-template-columns: repeat(2, 1fr); }
   .nav-meta{ display:none; }
 }
+/* =========================================
+   FOOTER — ORIGINAL LOOK + ANIMATION ONLY
+========================================= */
+
+.premium-footer {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 50px 20px 35px;
+
+    background: #080e1d;
+    color: #dce5f5;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* ===============================
+   POWERED BY
+================================ */
+
+.stack-label {
+    display: block;
+    text-align: center;
+
+    margin-bottom: 18px;
+
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+
+    color: #9ba9c3;
+}
+
+
+/* ===============================
+   TECH STACK
+================================ */
+
+.tech-items {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 13px;
+
+    width: 100%;
+}
+
+
+/* Individual pills */
+
+.tech-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 17px;
+
+    border-radius: 25px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #dce5f5;
+
+    background: rgba(255,255,255,.035);
+
+    border: 1px solid rgba(130,160,210,.25);
+
+    position: relative;
+    overflow: hidden;
+
+    transition:
+        transform .3s ease,
+        color .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+
+    animation: footerFloat 4s ease-in-out infinite;
+}
+
+
+/* Different timing */
+
+.tech-pill:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.tech-pill:nth-child(2) {
+    animation-delay: .3s;
+}
+
+.tech-pill:nth-child(3) {
+    animation-delay: .6s;
+}
+
+.tech-pill:nth-child(4) {
+    animation-delay: .9s;
+}
+
+.tech-pill:nth-child(5) {
+    animation-delay: 1.2s;
+}
+
+.tech-pill:nth-child(6) {
+    animation-delay: 1.5s;
+}
+
+
+@keyframes footerFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+
+/* Moving shine */
+
+.tech-pill::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        110deg,
+        transparent,
+        rgba(255,255,255,.18),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    animation: pillShine 5s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes pillShine {
+
+    0% {
+        left: -120%;
+    }
+
+    45%,100% {
+        left: 150%;
+    }
+}
+
+
+/* ===============================
+   HOVER COLORS
+================================ */
+
+.tech-pill:nth-child(1):hover {
+    color: #ffd43b;
+    border-color: #ffd43b;
+
+    box-shadow:
+        0 0 10px rgba(255,212,59,.45),
+        0 0 25px rgba(255,212,59,.15);
+
+    transform: translateY(-6px) scale(1.04);
+}
+
+
+.tech-pill:nth-child(2):hover {
+    color: #ff9d45;
+    border-color: #ff9d45;
+
+    box-shadow:
+        0 0 10px rgba(255,157,69,.45),
+        0 0 25px rgba(255,107,53,.15);
+
+    transform: translateY(-6px) scale(1.04);
+}
+
+
+.tech-pill:nth-child(3):hover {
+    color: #ffffff;
+    border-color: #ffffff;
+
+    box-shadow:
+        0 0 12px rgba(255,255,255,.5),
+        0 0 25px rgba(255,255,255,.15);
+
+    transform: translateY(-6px) scale(1.04);
+}
+
+
+.tech-pill:nth-child(4):hover {
+    color: #61dafb;
+    border-color: #61dafb;
+
+    box-shadow:
+        0 0 10px rgba(97,218,251,.5),
+        0 0 25px rgba(97,218,251,.15);
+
+    transform: translateY(-6px) scale(1.04);
+}
+
+
+.tech-pill:nth-child(5):hover {
+    color: #4db8ff;
+    border-color: #4db8ff;
+
+    box-shadow:
+        0 0 10px rgba(77,184,255,.5),
+        0 0 25px rgba(0,113,188,.15);
+
+    transform: translateY(-6px) scale(1.04);
+}
+
+
+.tech-pill:nth-child(6):hover {
+    color: #ff6fa3;
+    border-color: #ff6fa3;
+
+    box-shadow:
+        0 0 10px rgba(255,111,163,.5),
+        0 0 25px rgba(124,58,237,.2);
+
+    transform: translateY(-6px) scale(1.04);
+}
+
+
+/* ===============================
+   SEPARATOR
+================================ */
+
+.footer-line {
+
+    width: 75%;
+    max-width: 850px;
+
+    height: 1px;
+
+    margin: 32px auto;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(100,180,255,.5),
+        rgba(150,100,255,.5),
+        transparent
+    );
+}
+
+
+/* ===============================
+   NEURORISK
+================================ */
+
+.footer-brand {
+    text-align: center;
+}
+
+
+.footer-brand h2 {
+
+    margin: 0;
+
+    text-align: center;
+
+    font-size: 26px;
+
+    font-weight: 800;
+
+    color: #eaf0ff;
+}
+
+
+.footer-brand h2 span {
+
+    background: linear-gradient(
+        90deg,
+        #00e5ff,
+        #8b5cf6,
+        #00e5ff
+    );
+
+    background-size: 200% auto;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation: brandShine 4s linear infinite;
+}
+
+
+@keyframes brandShine {
+
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+
+.footer-brand h2 small {
+
+    display: block;
+
+    margin-top: 6px;
+
+    color: #9aa9c4;
+
+    font-size: 15px;
+
+    font-weight: 500;
+}
+
+
+.degree {
+
+    text-align: center;
+
+    margin: 12px 0 8px;
+
+    color: #c7d2e6;
+
+    font-size: 15px;
+}
+
+
+.developer {
+
+    text-align: center;
+
+    margin: 0;
+
+    color: #9aa9c4;
+
+    font-size: 14px;
+}
+
+
+.developer strong {
+
+    color: #eafaff;
+
+    animation: nameGlow 2.5s ease-in-out infinite;
+}
+
+
+@keyframes nameGlow {
+
+    0%,100% {
+        text-shadow:
+            0 0 3px rgba(0,229,255,.15);
+    }
+
+    50% {
+        text-shadow:
+            0 0 9px rgba(0,229,255,.6),
+            0 0 18px rgba(0,229,255,.2);
+    }
+}
+
+
+/* ===============================
+   BOTTOM LINE
+================================ */
+
+.footer-bottom {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid rgba(255,255,255,.06);
+
+    color: #687895;
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+    .premium-footer {
+        padding: 40px 15px 28px;
+    }
+
+    .tech-items {
+        gap: 9px;
+    }
+
+    .tech-pill {
+        font-size: 13px;
+        padding: 8px 13px;
+    }
+
+    .footer-brand h2 {
+        font-size: 22px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+}
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.hero-credit {
+    position: relative !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin: 10px auto 20px !important;
+    padding: 11px 22px !important;
+
+    min-height: 24px !important;
+
+    border-radius: 50px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 229, 255, 0.08),
+            rgba(124, 58, 237, 0.10),
+            rgba(236, 72, 153, 0.06)
+        ) !important;
+
+    border: 1px solid rgba(100, 190, 255, 0.35) !important;
+
+    box-shadow:
+        0 0 15px rgba(0, 229, 255, 0.08),
+        0 0 35px rgba(124, 58, 237, 0.06),
+        inset 0 1px 0 rgba(255,255,255,0.12) !important;
+
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+
+    overflow: hidden !important;
+
+    cursor: default !important;
+
+    animation:
+        heroCreditFloat 4s ease-in-out infinite,
+        heroCreditGlow 3s ease-in-out infinite !important;
+
+    transition:
+        transform 0.45s ease !important,
+        border-color 0.45s ease !important,
+        box-shadow 0.45s ease !important;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.hero-credit-content {
+    position: relative !important;
+
+    z-index: 5 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 8px !important;
+
+    white-space: nowrap !important;
+}
+
+
+/* =========================================
+   CYAN DOT
+========================================= */
+
+.hero-credit-dot {
+    width: 7px !important;
+    height: 7px !important;
+
+    min-width: 7px !important;
+
+    border-radius: 50% !important;
+
+    background: #00e5ff !important;
+
+    box-shadow:
+        0 0 5px #00e5ff,
+        0 0 12px #00e5ff,
+        0 0 25px rgba(0,229,255,0.8) !important;
+
+    animation: heroDotPulse 1.8s ease-in-out infinite !important;
+}
+
+
+/* =========================================
+   NORMAL TEXT
+========================================= */
+
+.hero-credit-text {
+    font-size: 14px !important;
+
+    font-weight: 600 !important;
+
+    letter-spacing: 0.7px !important;
+
+    color: #d8e4f7 !important;
+
+    text-shadow:
+        0 0 8px rgba(180,210,255,0.15) !important;
+}
+
+
+/* =========================================
+   NISHANT SONI
+========================================= */
+
+.hero-credit-name {
+    font-size: 15px !important;
+
+    font-weight: 800 !important;
+
+    letter-spacing: 0.6px !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00e5ff,
+            #8b5cf6,
+            #ec4899,
+            #00e5ff
+        ) !important;
+
+    background-size: 300% auto !important;
+
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+
+    animation:
+        heroNameGradient 3s linear infinite !important;
+
+    text-shadow: none !important;
+}
+
+
+/* =========================================
+   SPARK
+========================================= */
+
+.hero-credit-spark {
+    color: #a78bfa !important;
+
+    font-size: 13px !important;
+
+    text-shadow:
+        0 0 6px #a78bfa,
+        0 0 15px rgba(167,139,250,0.7) !important;
+
+    animation:
+        heroSpark 2s ease-in-out infinite !important;
+}
+
+
+/* =========================================
+   MOVING LIGHT
+========================================= */
+
+.hero-credit-sweep {
+    position: absolute !important;
+
+    z-index: 3 !important;
+
+    top: -30% !important;
+
+    left: -100% !important;
+
+    width: 45% !important;
+    height: 160% !important;
+
+    background:
+        linear-gradient(
+            105deg,
+            transparent 0%,
+            rgba(255,255,255,0.03) 35%,
+            rgba(255,255,255,0.38) 50%,
+            rgba(255,255,255,0.03) 65%,
+            transparent 100%
+        ) !important;
+
+    transform: skewX(-20deg) !important;
+
+    pointer-events: none !important;
+
+    animation:
+        heroSweep 4s ease-in-out infinite !important;
+}
+
+
+/* =========================================
+   BACKGROUND GLOW
+========================================= */
+
+.hero-credit-glow {
+    position: absolute !important;
+
+    width: 80px !important;
+    height: 80px !important;
+
+    top: 50% !important;
+    left: 50% !important;
+
+    transform: translate(-50%, -50%) !important;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,229,255,0.15),
+            rgba(124,58,237,0.08),
+            transparent 70%
+        ) !important;
+
+    filter: blur(20px) !important;
+
+    pointer-events: none !important;
+
+    animation:
+        heroGlowMove 4s ease-in-out infinite !important;
+}
+
+
+/* =========================================
+   FLOAT ANIMATION
+========================================= */
+
+@keyframes heroCreditFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) !important;
+    }
+
+    50% {
+        transform: translateY(-5px) !important;
+    }
+}
+
+
+/* =========================================
+   BORDER GLOW
+========================================= */
+
+@keyframes heroCreditGlow {
+
+    0%,
+    100% {
+
+        border-color:
+            rgba(100,190,255,0.28) !important;
+
+        box-shadow:
+            0 0 15px rgba(0,229,255,0.07),
+            0 0 35px rgba(124,58,237,0.05),
+            inset 0 1px 0 rgba(255,255,255,0.10) !important;
+    }
+
+    50% {
+
+        border-color:
+            rgba(0,229,255,0.65) !important;
+
+        box-shadow:
+            0 0 20px rgba(0,229,255,0.20),
+            0 0 45px rgba(124,58,237,0.12),
+            0 0 70px rgba(236,72,153,0.05),
+            inset 0 1px 0 rgba(255,255,255,0.18) !important;
+    }
+}
+
+
+/* =========================================
+   DOT
+========================================= */
+
+@keyframes heroDotPulse {
+
+    0%,
+    100% {
+        transform: scale(0.75);
+
+        opacity: 0.65;
+    }
+
+    50% {
+        transform: scale(1.35);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   NAME GRADIENT
+========================================= */
+
+@keyframes heroNameGradient {
+
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 300% center;
+    }
+}
+
+
+/* =========================================
+   SPARK
+========================================= */
+
+@keyframes heroSpark {
+
+    0%,
+    100% {
+        transform: scale(0.8) rotate(0deg);
+
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: scale(1.35) rotate(180deg);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   LIGHT SWEEP
+========================================= */
+
+@keyframes heroSweep {
+
+    0% {
+        left: -100%;
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    45% {
+        left: 150%;
+
+        opacity: 0;
+    }
+
+    100% {
+        left: 150%;
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   GLOW MOVEMENT
+========================================= */
+
+@keyframes heroGlowMove {
+
+    0%,
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(0.8);
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.5);
+    }
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+.hero-credit:hover {
+
+    transform:
+        translateY(-7px)
+        scale(1.04) !important;
+
+    border-color:
+        rgba(0,229,255,0.9) !important;
+
+    box-shadow:
+        0 0 18px rgba(0,229,255,0.35),
+        0 0 40px rgba(0,229,255,0.18),
+        0 0 75px rgba(124,58,237,0.18),
+        0 0 100px rgba(236,72,153,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.25) !important;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .hero-credit {
+        padding: 9px 15px !important;
+
+        margin-top: 8px !important;
+        margin-bottom: 16px !important;
+    }
+
+    .hero-credit-text {
+        font-size: 12px !important;
+    }
+
+    .hero-credit-name {
+        font-size: 13px !important;
+    }
+
+    .hero-credit-dot {
+        width: 5px !important;
+        height: 5px !important;
+        min-width: 5px !important;
+    }
+
+    .hero-credit-spark {
+        font-size: 11px !important;
+    }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hero-credit,
+    .hero-credit-dot,
+    .hero-credit-name,
+    .hero-credit-spark,
+    .hero-credit-sweep,
+    .hero-credit-glow {
+        animation: none !important;
+    }
+}

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroRisk — Migraine Risk Classification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="bg-grid"></div>
+
+<!-- ===================== NAV ===================== -->
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="pulse-dot"></span>
+    NeuroRisk
+  </div>
+  <div class="nav-meta">
+    <div class="nav-stat"><span>{{ (final_metrics.accuracy * 100) | round(1) }}%</span>Test Accuracy</div>
+    <div class="nav-stat"><span>{{ (final_metrics.roc_auc_ovr * 100) | round(1) }}%</span>ROC-AUC</div>
+    <div class="nav-stat"><span>{{ dataset_size.total }}</span>Records</div>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="hero-text">
+    <p class="hero-kicker">Btech Third Year Project Infomation Technology</p>
+    <h1>Know your migraine risk<br>before it knows you.</h1>
+    <p class="hero-desc">
+      A stacking ensemble of Random Forest, Gradient Boosting, k-NN and Logistic Regression
+      models — trained on 18 clinically-informed lifestyle and physiological features —
+      classifies migraine risk into <strong>Low</strong>, <strong>Medium</strong> and <strong>High</strong> categories.
+    </p>
+    <a href="#assessment" class="cta-btn">Start Assessment</a>
+  </div>
+  <div class="hero-visual">
+    <svg id="pulseSvg" viewBox="0 0 460 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="180" x2="460" y2="180" stroke="#1E2A45" stroke-width="1"/>
+      <line x1="0" y1="120" x2="460" y2="120" stroke="#1E2A45" stroke-width="1"/>
+      <line x1="0" y1="60" x2="460" y2="60" stroke="#1E2A45" stroke-width="1"/>
+      <path id="pulsePath" d="M0,120 L60,120 L80,40 L100,200 L120,120 L180,120 L200,90 L220,150 L240,120 L460,120"
+            stroke="#5B8DEF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle id="pulseDot" r="5" fill="#8FB2FF"/>
+    </svg>
+  </div>
+</header>
+
+<!-- ===================== ASSESSMENT ===================== -->
+<section id="assessment" class="assessment">
+  <div class="section-head">
+    <h2>Risk Assessment</h2>
+    <p>Enter your lifestyle &amp; health details — the model returns a live prediction.</p>
+  </div>
+
+  <div class="assessment-grid">
+
+    <form id="riskForm" class="form-card">
+
+      <div class="form-group-title">Personal</div>
+      <div class="field-row">
+        <div class="field">
+          <label>Age</label>
+          <input type="number" id="Age" min="10" max="100" value="28" required>
+        </div>
+        <div class="field">
+          <label>Gender</label>
+          <select id="Gender">
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>BMI</label>
+          <input type="number" step="0.1" id="BMI" min="10" max="50" value="23.5" required>
+        </div>
+      </div>
+
+      <div class="form-group-title">Lifestyle</div>
+      <div class="field-row">
+        <div class="field">
+          <label>Sleep (hrs/night)</label>
+          <input type="range" id="Sleep_Hours" min="2" max="11" step="0.5" value="6.5">
+          <output for="Sleep_Hours">6.5</output>
+        </div>
+        <div class="field">
+          <label>Stress Level (1-10)</label>
+          <input type="range" id="Stress_Level" min="1" max="10" step="1" value="5">
+          <output for="Stress_Level">5</output>
+        </div>
+        <div class="field">
+          <label>Screen Time (hrs/day)</label>
+          <input type="range" id="Screen_Time_Hours" min="0" max="16" step="0.5" value="6">
+          <output for="Screen_Time_Hours">6</output>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Water Intake (L/day)</label>
+          <input type="range" id="Water_Intake_Liters" min="0.3" max="5" step="0.1" value="2">
+          <output for="Water_Intake_Liters">2</output>
+        </div>
+        <div class="field">
+          <label>Caffeine (mg/day)</label>
+          <input type="range" id="Caffeine_Intake_mg" min="0" max="600" step="10" value="150">
+          <output for="Caffeine_Intake_mg">150</output>
+        </div>
+        <div class="field">
+          <label>Physical Activity (hrs/wk)</label>
+          <input type="range" id="Physical_Activity_Hours" min="0" max="14" step="0.5" value="3">
+          <output for="Physical_Activity_Hours">3</output>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Skipped Meals (per week)</label>
+          <input type="number" id="Skipped_Meals_Per_Week" min="0" max="14" value="1">
+        </div>
+        <div class="field">
+          <label>Prior Migraine Frequency (per month)</label>
+          <input type="number" id="Prior_Migraine_Frequency_Monthly" min="0" max="25" value="1">
+        </div>
+      </div>
+
+      <div class="form-group-title">Triggers &amp; History</div>
+      <div class="toggle-grid">
+        <label class="toggle"><input type="checkbox" id="Family_History"><span>Family History</span></label>
+        <label class="toggle"><input type="checkbox" id="Hormonal_Changes"><span>Hormonal Changes</span></label>
+        <label class="toggle"><input type="checkbox" id="Weather_Sensitivity"><span>Weather Sensitivity</span></label>
+        <label class="toggle"><input type="checkbox" id="Smoking"><span>Smoking</span></label>
+        <label class="toggle"><input type="checkbox" id="Alcohol_Consumption"><span>Alcohol Use</span></label>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Light Sensitivity (1-10)</label>
+          <input type="range" id="Light_Sensitivity_Score" min="1" max="10" step="1" value="5">
+          <output for="Light_Sensitivity_Score">5</output>
+        </div>
+        <div class="field">
+          <label>Noise Sensitivity (1-10)</label>
+          <input type="range" id="Noise_Sensitivity_Score" min="1" max="10" step="1" value="5">
+          <output for="Noise_Sensitivity_Score">5</output>
+        </div>
+      </div>
+
+      <button type="submit" class="predict-btn">
+        <span>Predict My Risk</span>
+      </button>
+    </form>
+
+    <div class="result-card" id="resultCard">
+      <div class="result-placeholder" id="resultPlaceholder">
+        <div class="gauge-empty"></div>
+        <p>Fill the assessment and hit <strong>Predict My Risk</strong> to see your result here.</p>
+      </div>
+
+      <div class="result-content" id="resultContent" style="display:none;">
+        <div class="gauge-wrap">
+          <svg viewBox="0 0 200 120" class="gauge">
+            <path d="M10,110 A90,90 0 0,1 190,110" fill="none" stroke="#1E2A45" stroke-width="14"/>
+            <path id="gaugeArc" d="M10,110 A90,90 0 0,1 190,110" fill="none" stroke="#5B8DEF" stroke-width="14"
+                  stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="283"/>
+            <line id="gaugeNeedle" x1="100" y1="110" x2="100" y2="35" stroke="#E7ECF5" stroke-width="3" stroke-linecap="round"
+                  transform="rotate(-90 100 110)"/>
+            <circle cx="100" cy="110" r="6" fill="#E7ECF5"/>
+          </svg>
+          <div class="gauge-label">
+            <span id="riskLabel">—</span>
+            <small>Predicted Risk Level</small>
+          </div>
+        </div>
+
+        <div class="prob-bars" id="probBars"></div>
+
+        <div class="factors">
+          <div class="factors-title">Contributing Factors</div>
+          <ul id="factorsList"></ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===================== MODEL INSIGHTS ===================== -->
+<section class="insights">
+  <div class="section-head">
+    <h2>Model Insights</h2>
+    <p>Full transparency into how the ensemble was built, tuned, and evaluated.</p>
+  </div>
+
+  <div class="metric-strip">
+    <div class="metric-box"><span>{{ (final_metrics.accuracy*100) | round(1) }}%</span>Accuracy</div>
+    <div class="metric-box"><span>{{ (final_metrics.precision_macro*100) | round(1) }}%</span>Precision (macro)</div>
+    <div class="metric-box"><span>{{ (final_metrics.recall_macro*100) | round(1) }}%</span>Recall (macro)</div>
+    <div class="metric-box"><span>{{ (final_metrics.f1_macro*100) | round(1) }}%</span>F1-Score (macro)</div>
+    <div class="metric-box"><span>{{ (final_metrics.roc_auc_ovr*100) | round(1) }}%</span>ROC-AUC (OvR)</div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="compare">Model Comparison</button>
+    <button class="tab-btn" data-tab="confusion">Confusion Matrix</button>
+    <button class="tab-btn" data-tab="roc">ROC Curves</button>
+    <button class="tab-btn" data-tab="importance">Feature Importance</button>
+  </div>
+
+  <div class="tab-panels">
+    <div class="tab-panel active" id="tab-compare">
+      <img src="{{ url_for('static', filename='img/model_comparison.png') }}" alt="Model comparison chart">
+    </div>
+    <div class="tab-panel" id="tab-confusion">
+      <img src="{{ url_for('static', filename='img/confusion_matrix.png') }}" alt="Confusion matrix">
+    </div>
+    <div class="tab-panel" id="tab-roc">
+      <img src="{{ url_for('static', filename='img/roc_curves.png') }}" alt="ROC curves">
+    </div>
+    <div class="tab-panel" id="tab-importance">
+      <img src="{{ url_for('static', filename='img/feature_importance.png') }}" alt="Feature importance">
+    </div>
+  </div>
+
+  <div class="architecture">
+    <div class="section-head" style="margin-top:0;">
+      <h2>Pipeline Architecture</h2>
+    </div>
+    <div class="pipeline">
+      <div class="pipe-step"><span>01</span>Data Preprocessing<small>Label Encoding + StandardScaler</small></div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step"><span>02</span>Benchmarking<small>7 algorithms, 3-fold Stratified CV</small></div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step"><span>03</span>Hyperparameter Tuning<small>GridSearchCV on RF &amp; GB</small></div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step"><span>04</span>Stacking Ensemble<small>RF + GB + k-NN + LogReg → Meta LogReg</small></div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-step"><span>05</span>Evaluation<small>Accuracy, F1, ROC-AUC, Permutation Importance</small></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-stack">
+    <span>Python</span><span>scikit-learn</span><span>Flask</span><span>Pandas</span><span>NumPy</span><span>Matplotlib</span>
+  </div>
+  <p style="text-align: center;">NeuroRisk — Migraine Risk Classification System · B.Tech Information Technology</p>
+  <p style="text-align: center;">Design and Developed By Nishant Soni</p>
+</footer>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

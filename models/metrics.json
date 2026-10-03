@@ -1,0 +1,185 @@
+{
+  "final_model": {
+    "model_name": "Stacking Ensemble",
+    "accuracy": 0.62,
+    "precision_macro": 0.6244618830808744,
+    "recall_macro": 0.6182341269841269,
+    "f1_macro": 0.6210937120306378,
+    "roc_auc_ovr": 0.8064578105921857
+  },
+  "classification_report": {
+    "Low": {
+      "precision": 0.7016460905349794,
+      "recall": 0.7104166666666667,
+      "f1-score": 0.7060041407867494,
+      "support": 480.0
+    },
+    "Medium": {
+      "precision": 0.4837962962962963,
+      "recall": 0.4976190476190476,
+      "f1-score": 0.49061032863849763,
+      "support": 420.0
+    },
+    "High": {
+      "precision": 0.6879432624113475,
+      "recall": 0.6466666666666666,
+      "f1-score": 0.6666666666666666,
+      "support": 300.0
+    },
+    "accuracy": 0.62,
+    "macro avg": {
+      "precision": 0.6244618830808744,
+      "recall": 0.6182341269841269,
+      "f1-score": 0.6210937120306378,
+      "support": 1200.0
+    },
+    "weighted avg": {
+      "precision": 0.6219729555205323,
+      "recall": 0.62,
+      "f1-score": 0.6207819380048406,
+      "support": 1200.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      341,
+      131,
+      8
+    ],
+    [
+      131,
+      209,
+      80
+    ],
+    [
+      14,
+      92,
+      194
+    ]
+  ],
+  "class_labels": [
+    "Low",
+    "Medium",
+    "High"
+  ],
+  "feature_columns": [
+    "Age",
+    "BMI",
+    "Sleep_Hours",
+    "Stress_Level",
+    "Screen_Time_Hours",
+    "Water_Intake_Liters",
+    "Caffeine_Intake_mg",
+    "Physical_Activity_Hours",
+    "Skipped_Meals_Per_Week",
+    "Family_History",
+    "Hormonal_Changes",
+    "Weather_Sensitivity",
+    "Smoking",
+    "Alcohol_Consumption",
+    "Light_Sensitivity_Score",
+    "Noise_Sensitivity_Score",
+    "Prior_Migraine_Frequency_Monthly",
+    "Gender_Enc"
+  ],
+  "feature_importance": {
+    "Stress_Level": 0.08116666666666665,
+    "Family_History": 0.05422222222222221,
+    "Light_Sensitivity_Score": 0.04249999999999998,
+    "Prior_Migraine_Frequency_Monthly": 0.04194444444444445,
+    "Hormonal_Changes": 0.0365,
+    "Sleep_Hours": 0.036,
+    "Noise_Sensitivity_Score": 0.02994444444444444,
+    "Screen_Time_Hours": 0.027499999999999983,
+    "Water_Intake_Liters": 0.0203888888888889,
+    "Weather_Sensitivity": 0.0195,
+    "Physical_Activity_Hours": 0.01083333333333331,
+    "Skipped_Meals_Per_Week": 0.010611111111111104,
+    "Caffeine_Intake_mg": 0.010444444444444426,
+    "Alcohol_Consumption": 0.003499999999999992,
+    "BMI": 0.002499999999999991,
+    "Smoking": 0.001944444444444445,
+    "Age": 0.0019444444444444374,
+    "Gender_Enc": 0.00033333333333333365
+  },
+  "benchmark_models": {
+    "Logistic Regression": {
+      "accuracy": 0.6191666666666666,
+      "precision": 0.6150683567044625,
+      "recall": 0.6254166666666666,
+      "f1": 0.6191572763589085,
+      "cv_f1_mean": 0.6194939292876068,
+      "cv_f1_std": 0.00810208878010153,
+      "train_time": 0.03881430625915527
+    },
+    "K-Nearest Neighbors": {
+      "accuracy": 0.5191666666666667,
+      "precision": 0.533590349634557,
+      "recall": 0.4919642857142857,
+      "f1": 0.49401099520267877,
+      "cv_f1_mean": 0.49853223624240034,
+      "cv_f1_std": 0.01533754295957075,
+      "train_time": 0.12424254417419434
+    },
+    "Support Vector Machine": {
+      "accuracy": 0.6025,
+      "precision": 0.5966074560758837,
+      "recall": 0.6086706349206349,
+      "f1": 0.6013072468013205,
+      "cv_f1_mean": 0.6038135216945704,
+      "cv_f1_std": 0.0063142552092251775,
+      "train_time": 7.481403112411499
+    },
+    "Decision Tree": {
+      "accuracy": 0.4775,
+      "precision": 0.4781802810696716,
+      "recall": 0.47821428571428576,
+      "f1": 0.47589405675848057,
+      "cv_f1_mean": 0.4811853158019573,
+      "cv_f1_std": 0.016451810403579185,
+      "train_time": 0.09631156921386719
+    },
+    "Random Forest": {
+      "accuracy": 0.5516666666666666,
+      "precision": 0.5518868277671101,
+      "recall": 0.5391666666666667,
+      "f1": 0.5433270312302584,
+      "cv_f1_mean": 0.5738101572198215,
+      "cv_f1_std": 0.01417648349310884,
+      "train_time": 7.138858318328857
+    },
+    "Gradient Boosting": {
+      "accuracy": 0.58,
+      "precision": 0.5763083768365268,
+      "recall": 0.5758730158730159,
+      "f1": 0.5758770621037695,
+      "cv_f1_mean": 0.5814002854555834,
+      "cv_f1_std": 0.0014949713701145056,
+      "train_time": 29.25219488143921
+    },
+    "Naive Bayes": {
+      "accuracy": 0.6025,
+      "precision": 0.6217022747968318,
+      "recall": 0.5913095238095238,
+      "f1": 0.6012665778189555,
+      "cv_f1_mean": 0.5839622719597696,
+      "cv_f1_std": 0.00895307682026358,
+      "train_time": 0.020801305770874023
+    }
+  },
+  "best_rf_params": {
+    "max_depth": null,
+    "min_samples_split": 5,
+    "n_estimators": 300
+  },
+  "best_gb_params": {
+    "learning_rate": 0.1,
+    "max_depth": 3,
+    "n_estimators": 150
+  },
+  "dataset_size": {
+    "total": 6000,
+    "train": 4800,
+    "test": 1200
+  }
+}
